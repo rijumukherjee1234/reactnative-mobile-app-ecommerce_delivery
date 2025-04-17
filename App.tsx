@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,  // Import SafeAreaView
@@ -11,7 +11,15 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import Authnavigation from "./src/navigation/authnavigate"
+import Authnavigation from "./src/navigation/authnavigate";
+import Appnavigate from "./src/navigation/appnavigate";
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+import Main from "./src/main"
+// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+// import { RootState } from './src/redux/rootTypes';
+
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -45,15 +53,24 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  // const loginStatus = useSelector((state: RootState) => state.loginCheck.login);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
+  
+  const [login,setlogin]= useState(0)
+  
   return (
+    <Provider store={store}>
     <NavigationContainer>
-      <Authnavigation />
+      <Main />
+    {/* {login == 0 ? <Authnavigation /> : <Appnavigate />} */}
+      {/* <Authnavigation />
+      <Appnavigate /> */}
     </NavigationContainer>
+  </Provider>
+   
   );
 }
 

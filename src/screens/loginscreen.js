@@ -4,14 +4,28 @@ import globalstyle from "../style/globalStyles"
 import InputField from '../component/inputFile';
 import Button from "../component/Button";
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import {loginCheck} from "../redux/action"
 // import { Button, Input } from 'react-native-elements';
 const LoginScreen = () => {
   const [email,setEmail] = useState()
   const [password,setpassword]= useState()
   const navigation = useNavigation();
+  const [login,islogin]=useState(true)
+  const dispatch = useDispatch();
   
+ 
 const RegistrationNavigate =(()=>{
   navigation.navigate('Register');
+})
+// const loginStatus = useSelector((state) => state.login);
+// alert(loginStatus)
+const loginButton = (()=>{
+ 
+  
+  dispatch(loginCheck())
+ 
+  // navigation.navigate('Dashboard')
 })
   return (
     <View style={{ alignItems: 'center',backgroundColor:"#6AoDAD" }}>
@@ -45,6 +59,7 @@ const RegistrationNavigate =(()=>{
       />
       <Button 
       title="Login"
+      onPress={loginButton}
       />
        <Text style={[globalstyle.loginText]}>
   New to this app? <Text style={globalstyle.register} onPress={RegistrationNavigate}>Registration Now</Text>
