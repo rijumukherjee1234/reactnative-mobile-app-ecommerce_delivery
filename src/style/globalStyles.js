@@ -56,19 +56,36 @@ const globalStyles = StyleSheet.create({
     padding: responsiveWidth(3),
   },
   welcomeView: {
-    flex: 1,
-    marginLeft: responsiveWidth(4),
+
+  marginLeft:responsiveHeight(2),
+     marginTop: responsiveHeight(4.5),
   },
   welcomeheaderText: {
     fontSize: responsiveFontSize(2.4),
-    fontWeight: '600',
-    color: '#4CAF50',
+    fontWeight: '200',
+   
   },
   employeeText: {
     fontSize: responsiveFontSize(2),
-    fontWeight: '400',
+  
     color: '#757575',
-    marginTop: responsiveHeight(0.3),
+    marginTop: responsiveHeight(2),
+    // marginRight: responsiveHeight(1),
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 10,
+    margin: 2,
+
+    // Shadow for iOS
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+
+    // Elevation for Android
+    elevation: 4,
   },
   
 });
